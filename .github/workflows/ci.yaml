@@ -8,6 +8,7 @@ jobs:
       matrix:
         php-versions: ['7.3', '7.4']
     steps:
+      - uses: actions/checkout@v2
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
