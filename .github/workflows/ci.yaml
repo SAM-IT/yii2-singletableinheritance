@@ -3,6 +3,7 @@ on: [push, pull_request]
 jobs:
   test:
     name: Run test & check code style
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         php-versions: ['7.3', '7.4']
