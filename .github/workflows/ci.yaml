@@ -1,9 +1,9 @@
 name: Continous integration
 on: [push, pull_request]
 jobs:
-  code_style:
+  test:
+    name: Run test & check code style
     strategy:
-      runs-on: ubuntu-latest
       matrix:
         php-versions: ['7.3', '7.4']
     steps:
