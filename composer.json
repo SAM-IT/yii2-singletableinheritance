@@ -14,21 +14,39 @@
     },
     "autoload": {
         "psr-4": {
-            "SamIT\\Yii2\\SingleTableInheritance\\": ["src/"]
+            "SamIT\\Yii2\\SingleTableInheritance\\": [
+                "src/"
+            ]
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SamIT\\Yii2\\SingleTableInheritance\\Tests\\": ["tests/"]
+            "SamIT\\Yii2\\SingleTableInheritance\\Tests\\": [
+                "tests/"
+            ]
         }
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5",
-        "phpunit/phpunit": "^9.1"
+        "phpunit/phpunit": "^9.1",
+        "brainmaestro/composer-git-hooks": "^2.8"
     },
     "scripts": {
+        "post-install-cmd": "cghooks add --ignore-lock",
         "test": "vendor/bin/phpunit",
         "lint": "vendor/bin/phpcs",
         "lint-fix": "vendor/bin/phpcbf"
+    },
+    "extra": {
+        "hooks": {
+            "pre-commit": [
+                "echo committing as $(git config user.name)",
+                "composer lint-fix",
+                "composer test"
+            ],
+            "commit-msg": [
+                "npx commitlint -e"
+            ]
+        }
     }
 }
