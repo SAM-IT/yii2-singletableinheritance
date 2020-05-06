@@ -1,4 +1,8 @@
 # yii2-singletableinheritance
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/SAM-IT/yii2-singletableinheritance/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/SAM-IT/yii2-singletableinheritance/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/SAM-IT/yii2-singletableinheritance/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/SAM-IT/yii2-singletableinheritance/?branch=master)
+![Continous integration](https://github.com/SAM-IT/yii2-singletableinheritance/workflows/Continous%20integration/badge.svg)
+
 Yii2 Single Table Inheritance (STI) using traits
 
 The reason this is implemented as traits is to prevent developers from putting 3rd party classes in their class hierarchy.
