@@ -2,6 +2,10 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/SAM-IT/yii2-singletableinheritance/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/SAM-IT/yii2-singletableinheritance/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/SAM-IT/yii2-singletableinheritance/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/SAM-IT/yii2-singletableinheritance/?branch=master)
 ![Continous integration](https://github.com/SAM-IT/yii2-singletableinheritance/workflows/Continous%20integration/badge.svg)
+[![Latest Stable Version](https://poser.pugx.org/sam-it/yii2-singletableinheritance/v/stable)](https://packagist.org/packages/sam-it/yii2-singletableinheritance)
+[![Total Downloads](https://poser.pugx.org/sam-it/yii2-singletableinheritance/downloads)](https://packagist.org/packages/sam-it/yii2-singletableinheritance)
+[![License](https://poser.pugx.org/sam-it/yii2-singletableinheritance/license)](https://packagist.org/packages/sam-it/yii2-singletableinheritance)
+[![Monthly Downloads](https://poser.pugx.org/sam-it/yii2-singletableinheritance/d/monthly)](https://packagist.org/packages/sam-it/yii2-singletableinheritance)
 
 Yii2 Single Table Inheritance (STI) using traits
 
