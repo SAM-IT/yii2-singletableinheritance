@@ -36,7 +36,8 @@ jobs:
       - name: Push code coverage
         run: php ocular.phar code-coverage:upload --format=php-clover coverage.xml
       - uses: actions/setup-node@v1
-        node-version: '14.x'
+        with:
+          node-version: '14.x'
       - name: Automated release
         run: npx semantic-release -d
         env:
