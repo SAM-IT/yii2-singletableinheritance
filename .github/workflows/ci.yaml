@@ -55,8 +55,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '14.x'
+      - name: install dependencies for semantic-release
         run: npm install
-        name: install dependencies for semantic-release
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
