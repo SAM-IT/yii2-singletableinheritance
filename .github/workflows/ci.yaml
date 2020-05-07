@@ -57,6 +57,6 @@ jobs:
           node-version: '14.x'
       - name: install dependencies for semantic-release
         run: npm install
-      - run: npx semantic-release
+      - run: $(npm bin)/semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
