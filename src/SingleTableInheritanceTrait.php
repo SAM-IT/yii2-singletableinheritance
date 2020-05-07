@@ -79,7 +79,10 @@ trait SingleTableInheritanceTrait
         parent::init();
     }
 
-    public static function instantiate(array $row): self
+    /**
+     * @param array $row The attributes for the row. We don't use a param type hint because the base class doesn't
+     */
+    public static function instantiate($row): self
     {
         return self::instantiateSingleTableInheritance($row);
     }
