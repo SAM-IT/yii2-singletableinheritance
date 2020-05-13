@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 use SamIT\Yii2\SingleTableInheritance\SingleTableInheritanceQueryTrait;
 use SamIT\Yii2\SingleTableInheritance\Tests\Stubs\InvalidStiModel;
 use SamIT\Yii2\SingleTableInheritance\Tests\Stubs\Query;
+use SamIT\Yii2\SingleTableInheritance\Tests\Stubs\StiDefault;
 use SamIT\Yii2\SingleTableInheritance\Tests\Stubs\StiModel;
 use SamIT\Yii2\SingleTableInheritance\Tests\Stubs\StiSub1;
 use SamIT\Yii2\SingleTableInheritance\Tests\Stubs\StiSub2;
@@ -41,19 +42,15 @@ class ModelTraitTest extends TestCase
     {
         $this->assertInstanceOf(StiSub1::class, StiModel::instantiate(['abc' => 'def']));
         $this->assertInstanceOf(StiSub2::class, StiModel::instantiate(['abc' => 'ghi']));
-        $this->assertInstanceOf(StiModel::class, StiModel::instantiate(['abc' => 'unknown']));
 
-        $this->assertNotInstanceOf(StiSub1::class, StiModel::instantiate(['abc' => 'unknown']));
-        $this->assertNotInstanceOf(StiSub2::class, StiModel::instantiate(['abc' => 'unknown']));
-        $this->assertInstanceOf(StiModel::class, StiModel::instantiate(['abc' => 'unknown']));
+        // Unknown type
+        $this->assertInstanceOf(StiDefault::class, StiModel::instantiate(['abc' => 'unknown']));
 
-        $this->assertNotInstanceOf(StiSub1::class, StiModel::instantiate(['abc' => null]));
-        $this->assertNotInstanceOf(StiSub2::class, StiModel::instantiate(['abc' => null]));
-        $this->assertInstanceOf(StiModel::class, StiModel::instantiate(['abc' => null]));
+        // Empty type
+        $this->assertInstanceOf(StiDefault::class, StiModel::instantiate(['abc' => null]));
 
-        $this->assertNotInstanceOf(StiSub1::class, StiModel::instantiate(['otherfield' => 'val']));
-        $this->assertNotInstanceOf(StiSub2::class, StiModel::instantiate(['otherfield' => 'val']));
-        $this->assertInstanceOf(StiModel::class, StiModel::instantiate(['otherfield' => 'val']));
+        // Missing type
+        $this->assertInstanceOf(StiDefault::class, StiModel::instantiate(['otherfield' => 'val']));
     }
 
     /**

@@ -15,7 +15,8 @@ class StiModel extends BaseModel
                 StiSub1::class => 'def',
                 StiSub2::class => 'ghi'
             ],
-            'column' => 'abc'
+            'column' => 'abc',
+            'default' => StiDefault::class
         ];
     }
 }

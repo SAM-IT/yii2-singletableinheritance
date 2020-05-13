@@ -2,16 +2,19 @@
 
 namespace SamIT\Yii2\SingleTableInheritance;
 
-use yii\db\ActiveQueryInterface;
-
 trait SingleTableInheritanceTrait
 {
     abstract public function setAttribute($name, $value);
 
     /**
-     * @var string
+     * @var string Name of the column that identifies the type of the record
      */
-    private static $typeColumn;
+    private static string $typeColumn;
+
+    /**
+     * @var string A class name to use if the type column contains an unknown value
+     */
+    private static string $defaultClass;
 
     /**
      * @var string[]
@@ -45,6 +48,7 @@ trait SingleTableInheritanceTrait
         if (!isset(self::$typeColumn)) {
             $config = self::inheritanceConfig();
             self::$typeColumn = $config['column'];
+            self::$defaultClass = $config['default'] ?? self::class;
             self::$classToType = $config['map'];
             self::$typeToClass = array_flip($config['map']);
         }
@@ -57,11 +61,14 @@ trait SingleTableInheritanceTrait
      */
     final public static function getTypeFromClass($class): ?string
     {
-        if ($class === self::class) {
-            return null;
-        }
         self::initCache();
-        return self::$classToType[$class] ?? self::getTypeFromClass(get_parent_class($class));
+        if (isset(self::$classToType[$class])) {
+            return self::$classToType[$class];
+        } elseif (false !== $parent = get_parent_class($class)) {
+            return self::getTypeFromClass($parent);
+        }
+
+        return null;
     }
 
     /**
@@ -90,7 +97,7 @@ trait SingleTableInheritanceTrait
     private static function getClassFromType(?string $type): string
     {
         self::initCache();
-        return self::$typeToClass[$type] ?? self::class;
+        return self::$typeToClass[$type] ?? self::$defaultClass;
     }
 
     private static function initSingleTableInheritance(self $model): void

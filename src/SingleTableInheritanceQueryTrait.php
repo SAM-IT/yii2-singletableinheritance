@@ -2,8 +2,6 @@
 
 namespace SamIT\Yii2\SingleTableInheritance;
 
-use yii\db\ActiveQueryTrait;
-
 /**
  * Trait SingleTableInheritanceQueryTrait
  * This trait will automatically add a type filter during `prepare()`. If you define a prepare method in the class that
