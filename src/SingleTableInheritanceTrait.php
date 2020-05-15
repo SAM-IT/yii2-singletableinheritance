@@ -96,7 +96,6 @@ trait SingleTableInheritanceTrait
 
     private static function getClassFromType(?string $type): string
     {
-        self::initCache();
         return self::$typeToClass[$type] ?? self::$defaultClass;
     }
 
@@ -107,6 +106,7 @@ trait SingleTableInheritanceTrait
 
     private static function instantiateSingleTableInheritance($row): self
     {
+        self::initCache();
         $class = self::getClassFromType($row[self::$typeColumn] ?? null);
         return new $class;
     }
